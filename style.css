@@ -573,32 +573,49 @@ body {
 
     /* Calendar Adjustments */
     .calendar-grid-container {
-        padding: 12px;
+        padding: 8px;
+        flex: 1;
+        overflow-y: auto;
+        /* Ensure scrolling within the calendar area */
+        display: flex;
+        flex-direction: column;
     }
 
     .calendar-header {
         padding: 12px;
         border-radius: var(--radius-md);
-        margin-bottom: 12px;
+        margin-bottom: 8px;
+        flex-shrink: 0;
     }
 
     .calendar-days {
-        gap: 6px;
+        gap: 4px;
+        /* Allow it to grow, but min-content is important */
+        flex-shrink: 0;
+    }
+
+    .weekdays {
+        font-size: 0.8rem;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
     }
 
     .day-cell {
-        min-height: 60px;
-        /* Compact for mobile */
-        padding: 4px;
+        min-height: 50px;
+        /* Even smaller for compact view */
+        padding: 2px;
+        border-radius: 6px;
     }
 
     .day-cell .day-number {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        margin-bottom: 2px;
     }
 
     .event-pill {
-        padding: 2px 4px;
-        font-size: 0.65rem;
+        padding: 1px 3px;
+        font-size: 0.6rem;
+        margin-bottom: 1px;
     }
 
     /* Dashboard Mobile */
