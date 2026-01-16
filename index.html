@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus Master</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Dashboard -->
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Syllabus Master</span>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>My Courses</h3>
+                <ul id="course-list" class="course-list">
+                    <!-- Courses injected here -->
+                </ul>
+                <button id="add-course-btn" class="btn-secondary small"><i class="fa-solid fa-plus"></i> Add
+                    Course</button>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Upcoming Deadlines</h3>
+                <div id="upcoming-list" class="upcoming-list">
+                    <!-- Upcoming items injected here -->
+                    <div class="empty-state">No upcoming deadlines</div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <p id="current-time">--:--</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="calendar-header glass-panel">
+                <div class="calendar-nav">
+                    <button id="prev-month" class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h2 id="current-month-year">January 2026</h2>
+                    <button id="next-month" class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <div class="header-actions">
+                    <button id="today-btn" class="btn-text">Today</button>
+                    <button id="add-event-main-btn" class="btn-primary"><i class="fa-solid fa-plus"></i> New
+                        Event</button>
+                </div>
+            </header>
+
+            <div class="calendar-grid-container glass-panel">
+                <div class="weekdays">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div id="calendar-days" class="calendar-days">
+                    <!-- Days injected here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add Event Modal -->
+    <div id="event-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Add Event</h2>
+            <form id="event-form">
+                <div class="form-group">
+                    <label for="event-title">Title</label>
+                    <input type="text" id="event-title" required placeholder="e.g. Calculus Midterm">
+                </div>
+                <div class="form-group">
+                    <label for="event-date">Date</label>
+                    <input type="date" id="event-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-course">Course</label>
+                    <select id="event-course">
+                        <option value="default">General / No Course</option>
+                        <!-- Courses populated dynamically -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="event-type">Type</label>
+                    <div class="type-selector">
+                        <input type="radio" name="eventType" value="exam" id="type-exam"><label for="type-exam"
+                            class="pill">Exam</label>
+                        <input type="radio" name="eventType" value="assignment" id="type-assignment" checked><label
+                            for="type-assignment" class="pill">Assignment</label>
+                        <input type="radio" name="eventType" value="reading" id="type-reading"><label for="type-reading"
+                            class="pill">Reading</label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="delete-event-btn" class="btn-danger hidden">Delete</button>
+                    <button type="submit" class="btn-primary">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Course Modal -->
+    <div id="course-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <span class="close-modal">&times;</span>
+            <h2 id="course-modal-title">Add Course</h2>
+            <form id="course-form">
+                <div class="form-group">
+                    <label for="course-name">Course Name</label>
+                    <input type="text" id="course-name" required placeholder="e.g. CS 101">
+                </div>
+                <div class="form-group">
+                    <label for="course-color">Color Code</label>
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="course-color" value="#3b82f6">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="delete-course-btn" class="btn-danger hidden">Delete</button>
+                    <button type="submit" class="btn-primary">Save Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
