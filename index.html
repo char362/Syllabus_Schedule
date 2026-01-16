@@ -15,66 +15,98 @@
 
 <body>
     <div class="app-container">
-        <!-- Sidebar / Dashboard -->
-        <aside class="sidebar glass-panel">
-            <div class="logo">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <span>Syllabus Master</span>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>My Courses</h3>
-                <ul id="course-list" class="course-list">
-                    <!-- Courses injected here -->
-                </ul>
-                <button id="add-course-btn" class="btn-secondary small"><i class="fa-solid fa-plus"></i> Add
-                    Course</button>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Upcoming Deadlines</h3>
-                <div id="upcoming-list" class="upcoming-list">
-                    <!-- Upcoming items injected here -->
-                    <div class="empty-state">No upcoming deadlines</div>
+        <!-- View Wrapper for Mobile Toggling -->
+        <div id="dashboard-view" class="view-section sidebar-view">
+            <!-- Sidebar / Dashboard -->
+            <aside class="sidebar glass-panel">
+                <div class="logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Syllabus Master</span>
                 </div>
-            </div>
 
-            <div class="sidebar-footer">
-                <p id="current-time">--:--</p>
-            </div>
-        </aside>
+                <div class="sidebar-section">
+                    <h3>My Courses</h3>
+                    <ul id="course-list" class="course-list">
+                        <!-- Courses injected here -->
+                    </ul>
+                    <button id="add-course-btn" class="btn-secondary small"><i class="fa-solid fa-plus"></i> Add
+                        Course</button>
+                    <!-- Mobile List Targets -->
+                    <ul id="mobile-course-list" class="mobile-only course-list"></ul>
+                </div>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="calendar-header glass-panel">
-                <div class="calendar-nav">
-                    <button id="prev-month" class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                    <h2 id="current-month-year">January 2026</h2>
-                    <button id="next-month" class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="sidebar-section">
+                    <h3>Upcoming Deadlines</h3>
+                    <div id="upcoming-list" class="upcoming-list">
+                        <!-- Upcoming items injected here -->
+                        <div class="empty-state">No upcoming deadlines</div>
+                    </div>
+                    <!-- Mobile List Targets -->
+                    <div id="mobile-upcoming-list" class="mobile-only upcoming-list"></div>
                 </div>
-                <div class="header-actions">
-                    <button id="today-btn" class="btn-text">Today</button>
-                    <button id="add-event-main-btn" class="btn-primary"><i class="fa-solid fa-plus"></i> New
-                        Event</button>
-                </div>
-            </header>
 
-            <div class="calendar-grid-container glass-panel">
-                <div class="weekdays">
-                    <div>Sun</div>
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div>Sat</div>
+                <div class="sidebar-footer">
+                    <p id="current-time">--:--</p>
                 </div>
-                <div id="calendar-days" class="calendar-days">
-                    <!-- Days injected here -->
+            </aside>
+        </div>
+
+        <div id="calendar-view" class="view-section active">
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="calendar-header glass-panel">
+                    <div class="calendar-nav">
+                        <button id="prev-month" class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <h2 id="current-month-year">January 2026</h2>
+                        <button id="next-month" class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <div class="header-actions">
+                        <button id="today-btn" class="btn-text">Today</button>
+                        <button id="add-event-main-btn" class="btn-primary"><i class="fa-solid fa-plus"></i> New
+                            Event</button>
+                    </div>
+                </header>
+
+                <div class="calendar-grid-container glass-panel">
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div id="calendar-days" class="calendar-days">
+                        <!-- Days injected here -->
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
+
+    <!-- Bottom Nav (Mobile) -->
+    <nav class="bottom-nav">
+        <button class="nav-item" data-target="dashboard-view">
+            <i class="fa-solid fa-list"></i>
+            <span>Dashboard</span>
+        </button>
+
+        <div class="fab-container">
+            <div class="fab-circle" id="mobile-fab-add">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+        </div>
+
+        <button class="nav-item active" data-target="calendar-view">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Calendar</span>
+        </button>
+    </nav>
+
+    <!-- Mobile Add Course Button for Dashboard View -->
+    <div id="mobile-add-course-btn" class="hidden"></div>
+    <!-- Hook for JS logic if needed, or just use existing button in sidebar -->
 
     <!-- Modals -->
     <!-- Add Event Modal -->
